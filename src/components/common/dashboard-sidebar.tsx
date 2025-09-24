@@ -177,7 +177,7 @@ function DashboardSidebarContent() {
               collapsed={isCollapsed}
             />
             <NavItem
-              href="/withdraw-request"
+              href="/widthdraw-request"
               icon={TbMessageDollar}
               label="Withdraw Request"
               active={

@@ -5,7 +5,7 @@ import React from "react";
 const PaymentPage = () => {
   return (
     <div>
-      <h1>Payment Page</h1>
+      <h1>This is payment page</h1>
     </div>
   );
 };
