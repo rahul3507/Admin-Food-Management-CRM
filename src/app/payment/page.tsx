@@ -2,12 +2,12 @@
 
 import React from "react";
 
-const page = () => {
+const PaymentPage = () => {
   return (
     <div>
-      <h1>Commission Page</h1>
+      <h1>Payment Page</h1>
     </div>
   );
 };
 
-export default page;
+export default PaymentPage;

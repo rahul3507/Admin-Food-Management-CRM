@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const page = () => {
+const FoodCategoriesPage = () => {
   return (
     <div>
       <h1>Food Categories</h1>
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default FoodCategoriesPage;

@@ -5,8 +5,8 @@
 import type React from "react";
 
 import Link from "next/link";
-import { LayoutGrid, Settings, UserStar } from "lucide-react";
-
+import { Bike, LayoutGrid, Settings, UserStar, Utensils } from "lucide-react";
+import { GoCreditCard } from "react-icons/go";
 import { cn } from "@/lib/utils";
 
 import {
@@ -25,6 +25,7 @@ import LogoutModal from "./logout-modal";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { IoFastFoodOutline } from "react-icons/io5";
+import { TbMessageDollar } from "react-icons/tb";
 
 // import { logout } from "@/service/authService";
 export default function DashboardSidebar() {
@@ -121,7 +122,10 @@ function DashboardSidebarContent() {
               href="/food-categories"
               icon={IoFastFoodOutline}
               label="Food Categories"
-              active={pathname === "/food-categories"}
+              active={
+                pathname === "/food-categories" ||
+                pathname.startsWith("/food-categories")
+              }
               collapsed={isCollapsed}
             />
 
@@ -133,23 +137,27 @@ function DashboardSidebarContent() {
               href="/customer"
               icon={UserStar}
               label="Customer"
-              active={pathname === "/customer"}
+              active={
+                pathname === "/customer" || pathname.startsWith("/customer")
+              }
               collapsed={isCollapsed}
             />
 
             <NavItem
               href="/restaurant"
-              icon={LayoutGrid}
+              icon={Utensils}
               label="Restaurant"
-              active={pathname === "/restaurant"}
+              active={
+                pathname === "/restaurant" || pathname.startsWith("/restaurant")
+              }
               collapsed={isCollapsed}
             />
 
             <NavItem
               href="/rider"
-              icon={LayoutGrid}
+              icon={Bike}
               label="Rider"
-              active={pathname === "/rider"}
+              active={pathname === "/rider" || pathname.startsWith("/rider")}
               collapsed={isCollapsed}
             />
 
@@ -160,17 +168,22 @@ function DashboardSidebarContent() {
             )}
 
             <NavItem
-              href="/restaurant-info"
-              icon={LayoutGrid}
-              label="Restaurant Info"
-              active={pathname === "/restaurant-info"}
+              href="/payment"
+              icon={GoCreditCard}
+              label="Payment"
+              active={
+                pathname === "/payment" || pathname.startsWith("/payment")
+              }
               collapsed={isCollapsed}
             />
             <NavItem
-              href="/commission"
-              icon={LayoutGrid}
-              label="Commission"
-              active={pathname === "/commission"}
+              href="/withdraw-request"
+              icon={TbMessageDollar}
+              label="Withdraw Request"
+              active={
+                pathname === "/withdraw-request" ||
+                pathname.startsWith("/withdraw-request")
+              }
               collapsed={isCollapsed}
             />
 
