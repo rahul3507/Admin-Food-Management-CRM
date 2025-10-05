@@ -6,7 +6,8 @@ import Header from "@/components/common/header";
 import { CustomTable } from "@/components/common/customTable";
 import { ridersData } from "@/data/riderData";
 import { Rider } from "@/types/riderTypes";
-import React from "react";
+import { RiderDetailsModal } from "@/components/rider/riderDetailsModal";
+import React, { useState } from "react";
 
 const riderColumns = [
   { key: "riderName", header: "Rider Name" },
@@ -17,9 +18,12 @@ const riderColumns = [
 ];
 
 const RiderPage = () => {
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [selectedRider, setSelectedRider] = useState<Rider | null>(null);
+
   const handleView = (rider: Rider) => {
-    console.log("View rider:", rider);
-    // Add your view logic here
+    setSelectedRider(rider);
+    setIsDetailsModalOpen(true);
   };
 
   const handleDelete = (rider: Rider) => {
@@ -43,6 +47,13 @@ const RiderPage = () => {
             onDelete={handleDelete}
           />
         </div>
+
+        {/* Rider Details Modal */}
+        <RiderDetailsModal
+          isOpen={isDetailsModalOpen}
+          onClose={() => setIsDetailsModalOpen(false)}
+          rider={selectedRider}
+        />
       </div>
     </div>
   );
