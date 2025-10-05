@@ -5,15 +5,23 @@
 import Header from "@/components/common/header";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { FoodCategoriesCard } from "@/components/foodCategories/foodCategoriesCard";
 import { foodCategoriesData } from "@/data/foodCategoriesData";
 import { FoodCategory } from "@/types/foodCategoriesTypes";
+import { AddFoodCategoryModal } from "@/components/foodCategories/addFoodCategoryModal";
 
 const FoodCategoriesPage = () => {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const handleDelete = (category: FoodCategory) => {
     console.log("Delete food category:", category);
     // Add your delete logic here
+  };
+
+  const handleAdd = (data: { title: string; image: File | null }) => {
+    console.log("Add food category:", data);
+    // Add your add logic here
   };
 
   return (
@@ -22,7 +30,10 @@ const FoodCategoriesPage = () => {
         {/* Header */}
         <div className="flex items-center justify-between ">
           <Header title="Food Categories" showSearch={false} />
-          <Button className="flex text-sm text-white bg-orange-500 hover:bg-orange-600 ">
+          <Button
+            onClick={() => setIsAddModalOpen(true)}
+            className="flex text-sm text-white bg-orange-500 hover:bg-orange-600 "
+          >
             <Plus /> Add Food Category
           </Button>
         </div>
@@ -37,6 +48,13 @@ const FoodCategoriesPage = () => {
             />
           ))}
         </div>
+
+        {/* Add Food Category Modal */}
+        <AddFoodCategoryModal
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+          onAdd={handleAdd}
+        />
       </div>
     </div>
   );
