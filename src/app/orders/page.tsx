@@ -8,10 +8,7 @@ export default function OrderPage() {
     <div className="min-h-screen bg-transparent pt-2 md:pt-6">
       <div className="max-w-full mx-auto space-y-6">
         {/* Header with Search */}
-        <Header
-          title="Order Management"
-          description="Manage your restaurant's orders and track their status"
-        />
+        <Header title="Order Management" />
 
         {/* Order Management with Tabs */}
         <OrderManagement />

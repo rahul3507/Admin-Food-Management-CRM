@@ -17,10 +17,7 @@ export default function Home() {
     <div className="min-h-screen bg-transparent pt-2 md:pt-6">
       <div className="max-w-full mx-auto space-y-6">
         {/* Header */}
-        <Header
-          title="Dashboard"
-          description="Welcome back! Here's what's happening with your restaurant today."
-        />
+        <Header title="Dashboard" />
 
         {/* Metrics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
