@@ -38,15 +38,14 @@ const RiderPage = () => {
         <Header title="Rider List" showSearch={false} />
 
         {/* Table */}
-        <div className="px-4 md:px-6">
-          <CustomTable
-            data={ridersData}
-            columns={riderColumns}
-            itemsPerPage={10}
-            onView={handleView}
-            onDelete={handleDelete}
-          />
-        </div>
+
+        <CustomTable
+          data={ridersData}
+          columns={riderColumns}
+          itemsPerPage={10}
+          onView={handleView}
+          onDelete={handleDelete}
+        />
 
         {/* Rider Details Modal */}
         <RiderDetailsModal
