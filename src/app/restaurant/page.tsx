@@ -6,7 +6,8 @@ import Header from "@/components/common/header";
 import { CustomTable } from "@/components/common/customTable";
 import { restaurantsData } from "@/data/restaurantData";
 import { Restaurant } from "@/types/restaurantTypes";
-import React from "react";
+import { RestaurantDetailsModal } from "@/components/restaurant/restaurantDetailsModal";
+import React, { useState } from "react";
 
 const restaurantColumns = [
   { key: "id", header: "Sl No." },
@@ -17,9 +18,13 @@ const restaurantColumns = [
 ];
 
 const RestaurantPage = () => {
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<Restaurant | null>(null);
+
   const handleView = (restaurant: Restaurant) => {
-    console.log("View restaurant:", restaurant);
-    // Add your view logic here
+    setSelectedRestaurant(restaurant);
+    setIsDetailsModalOpen(true);
   };
 
   const handleDelete = (restaurant: Restaurant) => {
@@ -41,6 +46,13 @@ const RestaurantPage = () => {
           itemsPerPage={10}
           onView={handleView}
           onDelete={handleDelete}
+        />
+
+        {/* Restaurant Details Modal */}
+        <RestaurantDetailsModal
+          isOpen={isDetailsModalOpen}
+          onClose={() => setIsDetailsModalOpen(false)}
+          restaurant={selectedRestaurant}
         />
       </div>
     </div>
