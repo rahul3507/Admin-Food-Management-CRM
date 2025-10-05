@@ -1,3 +1,4 @@
+
 /** @format */
 
 "use client";
@@ -9,7 +10,7 @@ import type { HeaderProps } from "@/types/commonTypes";
 
 const Header: React.FC<HeaderProps> = ({
   title,
-  description,
+  
   showSearch = false,
   searchPlaceholder = "Search...",
   onSearchChange,
@@ -21,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({
         <h1 className="text-xl md:text-3xl font-semibold text-black">
           {title}
         </h1>
-        <p className="text-black/50 text-sm md:text-base">{description}</p>
+       
       </div>
 
       {/* Right Side - Search Bar */}

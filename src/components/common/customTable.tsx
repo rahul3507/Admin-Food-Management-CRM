@@ -21,7 +21,8 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { Eye, Trash2 } from "lucide-react";
+import { Eye, Info, Trash2 } from "lucide-react";
+import { DeleteModal } from "./deleteModal";
 
 interface Column {
   key: string;
@@ -48,6 +49,8 @@ export function CustomTable<T extends { id: string }>({
 }: CustomTableProps<T>) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<T | null>(null);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -113,6 +116,19 @@ export function CustomTable<T extends { id: string }>({
     return items;
   };
 
+  const handleDeleteClick = (item: T) => {
+    setItemToDelete(item);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (itemToDelete && onDelete) {
+      onDelete(itemToDelete);
+    }
+    setIsDeleteModalOpen(false);
+    setItemToDelete(null);
+  };
+
   return (
     <div className="space-y-4">
       <div className="rounded-2xl border bg-white ">
@@ -162,16 +178,16 @@ export function CustomTable<T extends { id: string }>({
                         variant="ghost"
                         size="sm"
                         onClick={() => onView(item)}
-                        className="h-8 w-8 p-0 text-blue-600 hover:text-blue-800 hover:bg-blue-50"
+                        className="h-8 w-8 p-0  hover:bg-blue-50"
                       >
-                        <Eye className="h-4 w-4" />
+                        <Info className="h-4 w-4" />
                       </Button>
                     )}
                     {onDelete && (
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => onDelete(item)}
+                        onClick={() => handleDeleteClick(item)}
                         className="h-8 w-8 p-0 text-red-600 hover:text-red-800 hover:bg-red-50"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -232,6 +248,14 @@ export function CustomTable<T extends { id: string }>({
           </Pagination>
         </div>
       )}
+
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+        title="Delete Order"
+        description="Do you want to delete this order? This action can't be undone"
+      />
     </div>
   );
 }
