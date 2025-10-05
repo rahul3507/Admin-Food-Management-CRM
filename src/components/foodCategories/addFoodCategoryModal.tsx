@@ -63,23 +63,23 @@ export function AddFoodCategoryModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md p-0 gap-0">
+      <DialogContent className="sm:max-w-md p-0 gap-0 rounded-2xl">
         {/* Header */}
         <DialogHeader className="px-6 pt-6 pb-4">
-          <DialogTitle className="text-2xl font-semibold text-gray-900">
+          <DialogTitle className="text-xl lg:text-2xl text-center font-semibold text-gray-900">
             Add Food Category
           </DialogTitle>
         </DialogHeader>
 
         {/* Form Content */}
-        <div className="px-6 pb-6 space-y-5">
+        <div className="px-6 pb-6 space-y-4">
           {/* Title Input */}
           <div className="space-y-2">
             <Label
               htmlFor="title"
               className="text-base font-medium text-gray-700"
             >
-              Title
+              Food Category Name
             </Label>
             <Input
               id="title"
@@ -87,7 +87,7 @@ export function AddFoodCategoryModal({
               placeholder="Enter food category title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="h-12 text-base border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+              className="h-11 text-base bg-gray-100 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
             />
           </div>
 
@@ -97,7 +97,7 @@ export function AddFoodCategoryModal({
               htmlFor="image"
               className="text-base font-medium text-gray-700"
             >
-              Image
+              Upload Food image
             </Label>
 
             {/* Image Preview or Upload Button */}
@@ -124,13 +124,12 @@ export function AddFoodCategoryModal({
               ) : (
                 <label
                   htmlFor="image"
-                  className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-orange-500 hover:bg-gray-50 transition-colors"
+                  className="flex flex-col items-center justify-center w-full h-40 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-orange-500 hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-10 h-10 mb-3 text-gray-400" />
+                    <Upload className="w-8 h-8 mb-3 text-gray-400" />
                     <p className="mb-2 text-sm text-gray-500">
-                      <span className="font-semibold">Click to upload</span> or
-                      drag and drop
+                      Drop here to attach or upload
                     </p>
                     <p className="text-xs text-gray-500">
                       PNG, JPG or JPEG (MAX. 5MB)
@@ -149,20 +148,20 @@ export function AddFoodCategoryModal({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-3 pt-2">
+          <div className="flex w-full items-center justify-center gap-3 pt-2">
             <Button
               onClick={handleClose}
               variant="outline"
-              className="flex-1 h-12 text-base font-medium border-2 border-gray-300 hover:bg-gray-50"
+              className=" h-9 text-base font-medium border-2 border-gray-300 hover:bg-gray-50"
             >
               Cancel
             </Button>
             <Button
               onClick={handleSubmit}
               disabled={!title || !imageFile}
-              className="flex-1 h-12 text-base font-medium bg-orange-500 hover:bg-orange-600 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              className=" h-9 text-base font-medium bg-red-500 hover:bg-red-600 text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Add Category
+              Submit
             </Button>
           </div>
         </div>
