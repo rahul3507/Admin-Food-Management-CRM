@@ -6,9 +6,11 @@ import Header from "@/components/common/header";
 import { CustomTable } from "@/components/common/customTable";
 import { customersData } from "@/data/customerData";
 import { Customer } from "@/types/customerTypes";
-import React from "react";
+import { CustomerDetailsModal } from "@/components/customer/customerDetailsModal";
+import React, { useState } from "react";
 
 const customerColumns = [
+  { key: "id", header: "Sl No." },
   { key: "customerName", header: "Customer Name" },
   { key: "location", header: "Location" },
   { key: "email", header: "Email" },
@@ -16,9 +18,14 @@ const customerColumns = [
 ];
 
 export default function CustomerPage() {
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
+    null
+  );
+
   const handleView = (customer: Customer) => {
-    console.log("View customer:", customer);
-    // Add your view logic here
+    setSelectedCustomer(customer);
+    setIsDetailsModalOpen(true);
   };
 
   const handleDelete = (customer: Customer) => {
@@ -40,6 +47,13 @@ export default function CustomerPage() {
           itemsPerPage={10}
           onView={handleView}
           onDelete={handleDelete}
+        />
+
+        {/* Customer Details Modal */}
+        <CustomerDetailsModal
+          isOpen={isDetailsModalOpen}
+          onClose={() => setIsDetailsModalOpen(false)}
+          customer={selectedCustomer}
         />
       </div>
     </div>

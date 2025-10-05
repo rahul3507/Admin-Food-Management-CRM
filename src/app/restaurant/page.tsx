@@ -9,6 +9,7 @@ import { Restaurant } from "@/types/restaurantTypes";
 import React from "react";
 
 const restaurantColumns = [
+  { key: "id", header: "Sl No." },
   { key: "restaurantName", header: "Restaurant Name" },
   { key: "location", header: "Location" },
   { key: "email", header: "Email" },

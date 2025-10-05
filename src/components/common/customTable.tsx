@@ -135,13 +135,10 @@ export function CustomTable<T extends { id: string }>({
         <Table>
           <TableHeader>
             <TableRow className="bg-yellow-400 text-lg hover:bg-yellow-400 rounded-t-md">
-              <TableHead className="text-black font-semibold py-4 ">
-                Sl No.
-              </TableHead>
               {columns.map((column) => (
                 <TableHead
                   key={column.key}
-                  className={`text-black font-semibold ${
+                  className={`text-black font-semibold py-3 ${
                     column.className || ""
                   }`}
                 >
@@ -156,13 +153,10 @@ export function CustomTable<T extends { id: string }>({
           <TableBody>
             {currentData.map((item, index) => (
               <TableRow key={item.id} className="hover:bg-gray-50">
-                <TableCell className="font-medium py-3">
-                  {startIndex + index + 1}
-                </TableCell>
                 {columns.map((column) => (
                   <TableCell
                     key={column.key}
-                    className={column.className || "py-3"}
+                    className={column.className || "  py-3"}
                   >
                     {renderCell
                       ? renderCell(item, column.key)
