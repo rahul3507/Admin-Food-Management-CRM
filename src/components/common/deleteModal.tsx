@@ -11,7 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Trash2, X } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 interface DeleteModalProps {
   isOpen: boolean;
