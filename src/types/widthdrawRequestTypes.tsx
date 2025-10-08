@@ -1,20 +1,21 @@
 /** @format */
 
-export type WithdrawStatus = "Successful" | "Pending" | "Failed" | "Processing";
-
 export interface WithdrawRequest {
   id: string;
-  withdrawId: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  restaurantName: string;
+  requestedAmount: number;
+  availableBalance: number;
+  paymentMethod: "PayPal" | "Mastercard" | "Visa";
+  cardHolderName: string;
+  accountEmail: string;
+  cardNumber: string;
   date: string;
-  withdrawMethod: string;
-  amount: number;
-  status: WithdrawStatus;
-  transactionId?: string;
-  approvalCode?: string;
+  status: "Pending" | "Approved" | "Rejected";
 }
 
-export interface PaymentReceiptModalProps {
-  open: boolean;
-  onClose: () => void;
-  withdrawData: WithdrawRequest | null;
+export interface WithdrawRequestTableProps {
+  data: WithdrawRequest[];
 }

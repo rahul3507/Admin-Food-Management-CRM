@@ -179,10 +179,10 @@ function DashboardSidebarContent() {
             <NavItem
               href="/widthdraw-request"
               icon={TbMessageDollar}
-              label="Withdraw Request"
+              label="Widthdraw Request"
               active={
-                pathname === "/withdraw-request" ||
-                pathname.startsWith("/withdraw-request")
+                pathname === "/widthdraw-request" ||
+                pathname.startsWith("/widthdraw-request")
               }
               collapsed={isCollapsed}
             />

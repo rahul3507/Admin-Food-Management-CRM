@@ -2,22 +2,17 @@
 
 export interface Payment {
   id: string;
-  orderId: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  userStatus: "Rider" | "Restaurant";
   date: string;
-  customerName: string;
-  profileImage: string;
-  contactNo: string;
-  location: string;
   amount: number;
-  adminCommission: number;
-  paymentMethod: string;
-  status: PaymentStatus;
-  transactionId?: string;
+  paymentMethod: "Mastercard" | "PayPal" | "Visa";
+  status: "Successful" | "Cancel" | "Pending";
+  avatar?: string;
 }
 
-export type PaymentStatus = "Completed" | "Pending" | "Failed" | "Refunded";
-
-export interface PaymentDetailsModalProps {
-  children: React.ReactNode;
-  payment: Payment;
+export interface PaymentTableProps {
+  data: Payment[];
 }
