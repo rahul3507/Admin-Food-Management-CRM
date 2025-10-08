@@ -2,7 +2,7 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { WithdrawRequest } from "@/types/widthdrawRequestTypes";
+import { SendInvoiceModal } from "./sendInvoiceModal";
+import { SendReasonModal } from "./sendReasonModal";
 
 interface WithdrawReqModalProps {
   isOpen: boolean;
@@ -27,6 +29,9 @@ export function WithdrawReqModal({
   onApprove,
   onReject,
 }: WithdrawReqModalProps) {
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
+  const [isReasonModalOpen, setIsReasonModalOpen] = useState(false);
+
   if (!withdrawRequest) return null;
 
   const detailRows = [
@@ -47,16 +52,28 @@ export function WithdrawReqModal({
   ];
 
   const handleApprove = () => {
-    if (onApprove) {
-      onApprove(withdrawRequest);
-    }
-    onClose();
+    setIsInvoiceModalOpen(true);
   };
 
   const handleReject = () => {
+    setIsReasonModalOpen(true);
+  };
+
+  const handleInvoiceSubmit = (invoiceFile: File | null) => {
+    if (onApprove) {
+      onApprove(withdrawRequest);
+    }
+    console.log("Invoice file submitted:", invoiceFile);
+    setIsInvoiceModalOpen(false);
+    onClose();
+  };
+
+  const handleReasonSubmit = (reason: string) => {
     if (onReject) {
       onReject(withdrawRequest);
     }
+    console.log("Reject reason submitted:", reason);
+    setIsReasonModalOpen(false);
     onClose();
   };
 
@@ -119,6 +136,20 @@ export function WithdrawReqModal({
             </div>
           </div>
         )}
+
+        {/* Send Invoice Modal */}
+        <SendInvoiceModal
+          isOpen={isInvoiceModalOpen}
+          onClose={() => setIsInvoiceModalOpen(false)}
+          onSubmit={handleInvoiceSubmit}
+        />
+
+        {/* Send Reason Modal */}
+        <SendReasonModal
+          isOpen={isReasonModalOpen}
+          onClose={() => setIsReasonModalOpen(false)}
+          onSubmit={handleReasonSubmit}
+        />
       </DialogContent>
     </Dialog>
   );

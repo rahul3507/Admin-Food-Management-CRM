@@ -21,7 +21,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { Info, Trash2 } from "lucide-react";
+import { Trash2, View } from "lucide-react";
 import { DeleteModal } from "./deleteModal";
 
 interface Column {
@@ -149,7 +149,7 @@ export function PaymentTable<T extends { id: string }>({
                         onClick={() => onView(item)}
                         className="h-8 w-8 p-0 hover:bg-blue-50"
                       >
-                        <Info className="h-4 w-4" />
+                        <View className="h-4 w-4" />
                       </Button>
                     )}
                     {onDelete && (
