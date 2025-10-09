@@ -4,6 +4,8 @@ import {
   AnalyticsCard,
   ChartData,
   TopSellingItem,
+  OrdersChartData,
+  TopRestaurant,
 } from "@/types/dashboardTypes";
 import { CircleDollarSign, CreditCard, Handbag, Users } from "lucide-react";
 
@@ -89,5 +91,53 @@ export const topSellingItems: TopSellingItem[] = [
     name: "Classic Burger",
     image: "/foodCategoriesImages/burger.png",
     orders: 72,
+  },
+];
+
+export const ordersChartData: OrdersChartData[] = [
+  { day: "Mon", pending: 100, delivered: 190 },
+  { day: "Tus", pending: 115, delivered: 155 },
+  { day: "Wed", pending: 115, delivered: 135 },
+  { day: "Thu", pending: 85, delivered: 110 },
+  { day: "Fri", pending: 95, delivered: 70 },
+  { day: "Sat", pending: 100, delivered: 185 },
+  { day: "Sun", pending: 120, delivered: 195 },
+];
+
+export const topRestaurants: TopRestaurant[] = [
+  {
+    id: "1",
+    userId: "#1452",
+    cookingTime: "30:29 Minutes",
+    location: "132, first Street",
+    rating: 5.0,
+  },
+  {
+    id: "2",
+    userId: "#1453",
+    cookingTime: "30:29 Minutes",
+    location: "33, Palm Street",
+    rating: 5.0,
+  },
+  {
+    id: "3",
+    userId: "#1454",
+    cookingTime: "30:29 Minutes",
+    location: "33, Palm Street",
+    rating: 5.0,
+  },
+  {
+    id: "4",
+    userId: "#1454",
+    cookingTime: "30:29 Minutes",
+    location: "14, West Street",
+    rating: 5.0,
+  },
+  {
+    id: "5",
+    userId: "#1455",
+    cookingTime: "30:29 Minutes",
+    location: "124, Green Ave.",
+    rating: 5.0,
   },
 ];

@@ -21,3 +21,17 @@ export interface TopSellingItem {
   image: string;
   orders: number;
 }
+
+export interface OrdersChartData {
+  day: string;
+  pending: number;
+  delivered: number;
+}
+
+export interface TopRestaurant {
+  id: string;
+  userId: string;
+  cookingTime: string;
+  location: string;
+  rating: number;
+}

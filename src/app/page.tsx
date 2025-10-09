@@ -4,6 +4,8 @@ import Header from "@/components/common/header";
 import AnalyticsCard from "@/components/dashboard/analyticsCard";
 import IncomeChart from "@/components/dashboard/incomeChart";
 import TopItemCard from "@/components/dashboard/topItemCard";
+import OrdersChart from "@/components/dashboard/ordersChart";
+import TopRestTable from "@/components/dashboard/topRestTable";
 import { analyticsData } from "@/data/dashboardData";
 
 export default function Home() {
@@ -27,6 +29,16 @@ export default function Home() {
           </div>
           <div className="col-span-1 lg:col-span-2 2xl:col-span-2">
             <TopItemCard />
+          </div>
+        </div>
+
+        {/* Orders Chart and Top Restaurant Table Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+          <div className="col-span-1">
+            <OrdersChart />
+          </div>
+          <div className="col-span-1">
+            <TopRestTable />
           </div>
         </div>
       </div>
