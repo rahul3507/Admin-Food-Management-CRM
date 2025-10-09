@@ -100,10 +100,7 @@ export default function RestaurantInformationPage() {
     <div className="min-h-screen bg-transparent pt-2 md:pt-6">
       <div className="max-w-full mx-auto space-y-6">
         {/* Header without Search */}
-        <Header
-          title="Settings"
-          description="Keep everything organized with smart settings"
-        />
+        <Header title="Settings" />
 
         {/* Restaurant Information Section */}
         <div className=" space-y-2 md:space-y-4 ">

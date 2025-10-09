@@ -28,7 +28,7 @@ export default function SettingsPage() {
 
         {/* Settings Menu */}
         <div className=" w-full  flex flex-col  ">
-          <Link href="/settings/restaurant-information">
+          <Link href="/settings/personal-info">
             <div className="flex items-center w-full justify-between px-4 py-2.5 border-b-2 border-gray-300  bg-white hover:bg-gray-50 transition-colors cursor-pointer group">
               <div className="flex items-center gap-3">
                 <span className="text-gray-700 group-hover:text-gray-900">

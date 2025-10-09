@@ -1,24 +1,11 @@
 /** @format */
 
-export interface DashboardMetric {
+import { LucideIcon } from "lucide-react";
+
+export interface AnalyticsCard {
   title: string;
   value: string | number;
+  icon: LucideIcon;
   change: number;
   changeType: "increase" | "decrease";
-}
-
-// Define the RecentTransection interface
-export interface RecentTransection {
-  orderId: string;
-  name: string;
-  amount: string;
-}
-
-export interface RecentOrder {
-  id: string;
-  customer: string;
-  items: string;
-  amount: string;
-  status: string;
-  statusColor: string;
 }
