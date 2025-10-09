@@ -9,3 +9,15 @@ export interface AnalyticsCard {
   change: number;
   changeType: "increase" | "decrease";
 }
+
+export interface ChartData {
+  name: string;
+  value: number;
+}
+
+export interface TopSellingItem {
+  id: string;
+  name: string;
+  image: string;
+  orders: number;
+}
