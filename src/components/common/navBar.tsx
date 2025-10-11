@@ -14,8 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const languages = ["English", "Spanish", "French", "German"];
   if (
-    pathname === "/signIn" ||
-    pathname === "/signUp" ||
+    pathname === "/sign-in" ||
     pathname === "/forget-pass" ||
     pathname === "/verify-password" ||
     pathname === "/verify-otp" ||

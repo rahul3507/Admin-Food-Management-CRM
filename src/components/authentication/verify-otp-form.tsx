@@ -8,8 +8,10 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function VerifyOtpForm() {
+  const router = useRouter();
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -37,6 +39,8 @@ export function VerifyOtpForm() {
     e.preventDefault();
     const otpString = otp.join("");
     console.log("OTP submitted:", otpString);
+    // Navigate to reset password page after successful OTP verification
+    router.push("/reset-pass");
   };
 
   useEffect(() => {

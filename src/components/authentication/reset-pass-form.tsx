@@ -8,8 +8,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function ResetPassForm() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
@@ -26,11 +29,12 @@ export function ResetPassForm() {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
-
       return;
     }
 
     console.log("Password reset submitted:", formData);
+    // Navigate to verify OTP page after successful password reset
+    router.push("/sign-in");
   };
 
   return (

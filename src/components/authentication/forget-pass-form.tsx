@@ -7,19 +7,30 @@ import type React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function ForgetPassForm() {
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add your email validation logic here if needed
+    console.log("OTP send request submitted");
+    // Navigate to verify OTP page
+    router.push("/verify-otp");
+  };
+
   return (
     <div className="flex items-center justify-center">
       <div className="w-full max-w-md bg-[#ffffff] rounded-2xl shadow-lg p-8 lg:p-12">
         <h1 className="text-3xl font-semibold text-[#1f2937] mb-8 text-center flex items-center justify-center ">
-          <Link href="/signIn">
+          <Link href="/sign-in">
             <ArrowLeft className="h-8 w-12 pt-1" />
           </Link>
           Forget Password
         </h1>
 
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Input */}
           <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]">

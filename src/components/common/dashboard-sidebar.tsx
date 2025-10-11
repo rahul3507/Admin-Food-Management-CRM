@@ -44,12 +44,11 @@ function DashboardSidebarContent() {
     // Redirect to login page
     // await logout();
     // localStorage.removeItem("accessToken");
-    router.push("/signin");
+    router.push("/sign-in");
   };
 
   if (
-    pathname === "/signIn" ||
-    pathname === "/signUp" ||
+    pathname === "/sign-in" ||
     pathname === "/forget-pass" ||
     pathname === "/verify-password" ||
     pathname === "/verify-otp" ||

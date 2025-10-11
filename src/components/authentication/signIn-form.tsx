@@ -8,8 +8,18 @@ import { Button } from "@/components/ui/button";
 import { Mail, Eye, Key } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function SignInForm() {
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add your authentication logic here if needed
+    // For now, we'll just redirect to the dashboard
+    router.push("/");
+  };
+
   return (
     <div className="flex items-center justify-center">
       <div className="w-full max-w-md bg-[#ffffff] rounded-2xl shadow-lg p-8 lg:p-12">
@@ -17,7 +27,7 @@ export function SignInForm() {
           Sign In
         </h1>
 
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Input */}
           <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]">
