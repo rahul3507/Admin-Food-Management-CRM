@@ -45,6 +45,7 @@ function DashboardSidebarContent() {
     // await logout();
     // localStorage.removeItem("accessToken");
     router.push("/sign-in");
+    setIsLogoutModalOpen(false);
   };
 
   if (
