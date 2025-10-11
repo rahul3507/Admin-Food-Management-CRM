@@ -51,7 +51,7 @@ export default function SettingsPage() {
             <ChevronRightIcon className="w-5 h-5 text-gray-400 group-hover:text-gray-600" />
           </div>
 
-          <Link href="/settings/restaurant-information">
+          <Link href="/settings/privacy-policy">
             <div className="flex items-center w-full justify-between px-4 py-2.5 border-b-2 border-gray-300  bg-white hover:bg-gray-50 transition-colors cursor-pointer group">
               <div className="flex items-center gap-3">
                 <span className="text-gray-700 group-hover:text-gray-900">
@@ -62,11 +62,11 @@ export default function SettingsPage() {
             </div>
           </Link>
 
-          <Link href="/settings/restaurant-information">
+          <Link href="/settings/terms-conditions">
             <div className="flex items-center w-full justify-between px-4 py-2.5 border-b-2 border-gray-300  bg-white hover:bg-gray-50 transition-colors cursor-pointer group">
               <div className="flex items-center gap-3">
                 <span className="text-gray-700 group-hover:text-gray-900">
-                  terms & condition
+                  terms & conditions
                 </span>
               </div>
               <ChevronRightIcon className="w-5 h-5 text-gray-400 group-hover:text-gray-600" />
