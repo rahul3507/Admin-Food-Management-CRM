@@ -7,10 +7,19 @@ import { ArrowLeftIcon, PenLine } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import ProfileEditModal from "@/components/settings/profileEditModal";
 
 const Page = () => {
   const [fullName, setFullName] = useState("Sidney Paul");
   const [email, setEmail] = useState("name@gmail.com");
+  const [profileImage, setProfileImage] = useState("/api/placeholder/80/80");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSaveProfile = (name: string, image: string) => {
+    setFullName(name);
+    setProfileImage(image);
+  };
+
   return (
     <div className="min-h-screen bg-transparent pt-2 md:pt-6">
       <div className="max-w-full mx-auto space-y-6">
@@ -21,7 +30,10 @@ const Page = () => {
               Personal Information
             </h2>
           </Link>
-          <Button className="w-20 flex bg-red-500 hover:bg-red-600 text-white">
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="w-20 flex bg-red-500 hover:bg-red-600 text-white"
+          >
             <PenLine /> Edit
           </Button>
         </div>
@@ -30,7 +42,7 @@ const Page = () => {
           <div className="flex flex-col items-center  bg-red-50 border border-red-500 py-6 px-12 rounded-xl gap-2 ">
             <div className="relative">
               <Image
-                src="/api/placeholder/80/80"
+                src={profileImage}
                 alt="Profile"
                 width={80}
                 height={80}
@@ -72,6 +84,15 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      {/* Profile Edit Modal */}
+      <ProfileEditModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        currentName={fullName}
+        currentImage={profileImage}
+        onSave={handleSaveProfile}
+      />
     </div>
   );
 };

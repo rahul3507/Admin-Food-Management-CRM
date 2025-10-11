@@ -16,7 +16,7 @@ import { topRestaurants } from "@/data/dashboardData";
 
 const TopRestTable = () => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border">
+    <div className="bg-white rounded-xl p-6 shadow-sm border h-[430px]">
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900">Top Restaurant</h3>
       </div>
@@ -43,19 +43,18 @@ const TopRestTable = () => {
             {topRestaurants.map((restaurant) => (
               <TableRow
                 key={restaurant.id}
-                style={{ height: "60px" }}
-                className="h-10 border-b border-gray-300 hover:bg-gray-50/50"
+                className="h-6 border-b border-gray-300 hover:bg-gray-50/50"
               >
-                <TableCell className="font-medium  text-gray-900">
+                <TableCell className="font-medium py-3  text-gray-900">
                   {restaurant.userId}
                 </TableCell>
-                <TableCell className="text-gray-600">
+                <TableCell className="text-gray-600  py-3">
                   {restaurant.cookingTime}
                 </TableCell>
-                <TableCell className="text-gray-600">
+                <TableCell className="text-gray-600 py-3">
                   {restaurant.location}
                 </TableCell>
-                <TableCell>
+                <TableCell className="py-3">
                   <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="text-gray-900 font-medium">
