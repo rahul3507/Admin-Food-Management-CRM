@@ -4,110 +4,67 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Mail, Eye, EyeOff } from "lucide-react";
+import { Mail, Eye, Key } from "lucide-react";
+import { Checkbox } from "../ui/checkbox";
 import Link from "next/link";
 
 export function SignInForm() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Sign in submitted:", formData);
-  };
-
   return (
-    <Card className="w-full shadow-lg border-0 bg-white">
-      <CardHeader className="text-center pb-4">
-        <CardTitle className="text-2xl font-semibold text-gray-800">
+    <div className="flex items-center justify-center">
+      <div className="w-full max-w-md bg-[#ffffff] rounded-2xl shadow-lg p-8 lg:p-12">
+        <h1 className="text-3xl font-semibold text-[#1f2937] mb-8 text-center">
           Sign In
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
-          <div className="space-y-2">
-            <Label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-800"
-            >
-              Email
-            </Label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email ..."
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className="h-12 pl-10 border-gray-200 focus:border-gray-300 focus:ring-0 text-gray-600"
-              />
+        </h1>
+
+        <form className="space-y-6">
+          {/* Email Input */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]">
+              <Mail className="w-5 h-5" />
             </div>
+            <input
+              type="email"
+              placeholder="Enter your email ..."
+              className="w-full pl-12 pr-4 py-3.5 border border-[#9ca3af] rounded-lg text-[#1f2937] placeholder:text-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#e53935]/20 focus:border-[#e53935] transition-all"
+            />
           </div>
 
-          {/* Password */}
-          <div className="space-y-2">
-            <Label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-800"
-            >
-              Password
-            </Label>
-            <div className="relative">
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter Password"
-                value={formData.password}
-                onChange={(e) => handleInputChange("password", e.target.value)}
-                className="h-12 pr-10 border-gray-200 focus:border-gray-300 focus:ring-0 text-gray-600"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600"
-              >
-                {showPassword ? <EyeOff /> : <Eye />}
-              </button>
+          {/* Password Input */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]">
+              <Key className="w-5 h-5" />
             </div>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              className="w-full pl-12 pr-12 py-3.5 border border-[#9ca3af] rounded-lg text-[#1f2937] placeholder:text-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#e53935]/20 focus:border-[#e53935] transition-all"
+            />
+            <button
+              type="button"
+              className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2 text-[#6b7280] hover:text-[#1f2937] transition-colors"
+            >
+              <Eye className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Remember Me and Forgot Password Row */}
+          {/* Remember me & Forgot password */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="remember"
+                className="border-[#9ca3af] cursor-pointer"
               />
-              <Label
-                htmlFor="rememberMe"
-                className="text-sm text-gray-600 cursor-pointer"
+              <label
+                htmlFor="remember"
+                className="text-sm text-[#4b5563] cursor-pointer select-none"
               >
                 Remember me
-              </Label>
+              </label>
             </div>
             <Link
-              href={"/forget-pass"}
-              type="button"
-              className="text-sm text-gray-600 hover:text-red-600 hover:underline"
+              href="/forget-pass"
+              className="text-sm text-[#4b5563] hover:text-[#e53935] transition-colors"
             >
               Forgot password?
             </Link>
@@ -116,24 +73,12 @@ export function SignInForm() {
           {/* Sign In Button */}
           <Button
             type="submit"
-            className="w-full h-12 text-white font-medium text-base rounded-lg hover:opacity-90 transition-opacity bg-red-600 hover:bg-red-700"
+            className="w-full bg-[#e53935] hover:bg-[#d32f2f] text-[#ffffff] py-6 rounded-lg text-base font-medium transition-colors"
           >
             Sign In
           </Button>
-
-          {/* Sign Up Link */}
-          <div className="text-center pt-2">
-            <span className="text-gray-600">Don&apos;t have an account? </span>
-            <Link
-              href={"/signUp"}
-              type="button"
-              className=" cursor-pointer font-medium hover:underline text-red-600"
-            >
-              Sign Up
-            </Link>
-          </div>
         </form>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

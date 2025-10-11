@@ -5,9 +5,9 @@
 import type React from "react";
 
 import { useState, useRef, useEffect } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export function VerifyOtpForm() {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
@@ -39,33 +39,31 @@ export function VerifyOtpForm() {
     console.log("OTP submitted:", otpString);
   };
 
-  const handleBack = () => {
-    console.log("Navigate back to forget password");
-  };
-
   useEffect(() => {
     // Focus first input on mount
     inputRefs.current[0]?.focus();
   }, []);
 
   return (
-    <Card className="w-full shadow-lg border-0 bg-white">
-      <CardHeader className="pb-4">
-        <div className="flex items-center">
-          <button
-            type="button"
-            onClick={handleBack}
-            className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
-            <span className="text-lg font-medium">Verify Email</span>
-          </button>
+    <div className="flex items-center justify-center">
+      <div className="w-full max-w-md bg-[#ffffff] rounded-2xl shadow-lg p-8 lg:p-12">
+        <h1 className="text-3xl font-semibold text-[#1f2937] mb-8 text-center flex items-center justify-center">
+          <Link href="/forget-pass">
+            <ArrowLeft className="h-8 w-12 pt-1" />
+          </Link>
+          Verify Email
+        </h1>
+
+        {/* Helper Text */}
+        <div className="text-center mb-8">
+          <p className="text-sm text-[#6b7280]">
+            Please enter the OTP we have sent you in your email.
+          </p>
         </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* OTP Input Boxes */}
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-3 mb-8">
             {otp.map((digit, index) => (
               <input
                 key={index}
@@ -79,7 +77,7 @@ export function VerifyOtpForm() {
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-12 h-12 text-center text-lg font-semibold border border-gray-200 rounded-lg focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 text-gray-800"
+                className="w-12 h-12 text-center text-lg font-semibold border border-[#9ca3af] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e53935]/20 focus:border-[#e53935] text-[#1f2937] transition-all"
               />
             ))}
           </div>
@@ -87,19 +85,12 @@ export function VerifyOtpForm() {
           {/* Verify Button */}
           <Button
             type="submit"
-            className="w-full h-12 text-white font-medium text-base rounded-lg hover:opacity-90 transition-opacity bg-red-600 hover:bg-red-700"
+            className="w-full bg-[#e53935] hover:bg-[#d32f2f] text-[#ffffff] py-6 rounded-lg text-base font-medium transition-colors"
           >
             Verify
           </Button>
-
-          {/* Helper Text */}
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Please enter the OTP we have sent you in your email.
-            </p>
-          </div>
         </form>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
